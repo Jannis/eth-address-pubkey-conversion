@@ -19,17 +19,20 @@ describe("Contract", function () {
       let ethersAddr = ethers.utils.computeAddress(pubkey);
       let impl1Addr = await instance.impl1(pubkey);
       let impl2Addr = await instance.impl2(pubkey);
+      let impl3Addr = await instance.impl3(pubkey);
 
       expect({
         pubkey,
         ethers: ethersAddr,
         impl1: impl1Addr,
         impl2: impl2Addr,
+        impl3: impl3Addr,
       }).to.equal({
         pubkey,
         ethers: expectedAddress,
         impl1: expectedAddress,
         impl2: expectedAddress,
+        impl3: expectedAddress,
       });
     }
   });
