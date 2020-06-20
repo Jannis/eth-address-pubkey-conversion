@@ -14,21 +14,24 @@ describe("Contract", function () {
     };
 
     for (let pubkey in expectedAddresses) {
+      let uncompressedPubkey = ethers.utils.computePublicKey(pubkey);
       let expectedAddress = expectedAddresses[pubkey];
 
-      let ethersAddr = ethers.utils.computeAddress(pubkey);
-      let impl1Addr = await instance.impl1(pubkey);
-      let impl2Addr = await instance.impl2(pubkey);
-      let impl3Addr = await instance.impl3(pubkey);
+      let ethersAddr = ethers.utils.computeAddress(uncompressedPubkey);
+      let impl1Addr = await instance.impl1(uncompressedPubkey);
+      let impl2Addr = await instance.impl2(uncompressedPubkey);
+      let impl3Addr = await instance.impl3(uncompressedPubkey);
 
       expect({
         pubkey,
+        uncompressedPubkey,
         ethers: ethersAddr,
         impl1: impl1Addr,
         impl2: impl2Addr,
         impl3: impl3Addr,
       }).to.equal({
         pubkey,
+        uncompressedPubkey,
         ethers: expectedAddress,
         impl1: expectedAddress,
         impl2: expectedAddress,
