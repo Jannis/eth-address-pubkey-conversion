@@ -27,4 +27,9 @@ contract Contract {
         uint256 value = uint256(keccak256(pubkey));
         return address(value & mask);
     }
+
+    // Good
+    function impl4(bytes calldata _publicKey) external pure returns (address) {
+        return address(uint256(keccak256(bytes(_publicKey[1:]))));
+    }
 }

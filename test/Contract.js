@@ -21,6 +21,7 @@ describe("Contract", function () {
       let impl1Addr = await instance.impl1(uncompressedPubkey);
       let impl2Addr = await instance.impl2(uncompressedPubkey);
       let impl3Addr = await instance.impl3(uncompressedPubkey);
+      let impl4Addr = await instance.impl4(uncompressedPubkey);
 
       expect({
         pubkey,
@@ -29,6 +30,7 @@ describe("Contract", function () {
         impl1: impl1Addr,
         impl2: impl2Addr,
         impl3: impl3Addr,
+        impl4: impl4Addr,
       }).to.equal({
         pubkey,
         uncompressedPubkey,
@@ -36,6 +38,7 @@ describe("Contract", function () {
         impl1: expectedAddress,
         impl2: expectedAddress,
         impl3: expectedAddress,
+        impl4: expectedAddress,
       });
     }
   });
